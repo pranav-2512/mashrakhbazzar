@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mashrakh Bazzar - Coming Soon</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="wrap">
+
+    <!-- HEADER -->
+    <header class="topbar">
+      <div class="header-row">
+
+        <!-- Logo -->
+        <img class="logo" src="logo_MASHRAKH.jpg" alt="Mashrakh Bazzar logo">
+
+        <!-- Center Text -->
+        <div class="head-center">
+          <h1 class="title">Launcing Soon</h1>
+          <p class="subtitle">Launching on Ram Navami (26 March)</p>
+        </div>
+
+        <!-- Timer -->
+        <div class="timer-inline">
+          <span class="unit">
+            <span id="cd-days" class="num">0</span>
+            <span class="label">D</span>
+          </span>
+          <span class="unit">
+            <span id="cd-hours" class="num">0</span>
+            <span class="label">H</span>
+          </span>
+          <span class="unit">
+            <span id="cd-minutes" class="num">0</span>
+            <span class="label">M</span>
+          </span>
+          <span class="unit">
+            <span id="cd-seconds" class="num">0</span>
+            <span class="label">S</span>
+          </span>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- POSTER -->
+    <section class="poster-section">
+      <img class="poster" src="poster.jpeg" alt="Mashrakh Bazzar poster">
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="brand-name">Mashrakh Bazzar</div>
+          <div class="footer-copy">Launching soon. Stay tuned for updates.</div>
+        </div>
+
+        <div class="footer-links" role="navigation" aria-label="Social links">
+          <a
+            class="link icon-link"
+            href="https://www.mashrakhbazzar.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Mashrakh Bazzar website"
+          >
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm7.7 9h-2.1a15.3 15.3 0 0 0-1.2-4.1A8.03 8.03 0 0 1 19.7 11ZM12 4c.8 0 2.3 2 3 7H9c.7-5 2.2-7 3-7ZM7.5 4.9A15.3 15.3 0 0 0 6.3 11H4.3a8.03 8.03 0 0 1 3.2-6.1ZM4.3 13h2c.2 1.5.7 3 1.4 4.1A8.03 8.03 0 0 1 4.3 13Zm7.7 7c-.8 0-2.3-2-3-7h6c-.7 5-2.2 7-3 7Zm4.5-.9c-.7-1.1-1.2-2.6-1.4-4.1h2a8.03 8.03 0 0 1-.6 4.1Z"/>
+            </svg>
+            <span class="sr-only">Website</span>
+          </a>
+
+          <a
+            class="link icon-link"
+            href="https://www.instagram.com/mashrakhbazzar"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Mashrakh Bazzar on Instagram"
+          >
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7Zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10Zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5Zm0 2A2.5 2.5 0 1 1 9.5 12 2.5 2.5 0 0 1 12 9.5Zm6.1-2.8a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"/>
+            </svg>
+            <span class="sr-only">Instagram</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Mashrakh Bazzar. All rights reserved.</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- TIMER SCRIPT -->
+  <script>
+    const launchDate = new Date(Date.UTC(2026, 2, 26, 0, 0, 0)).getTime();
+
+    function updateCountdown() {
+      const now = Date.now();
+      const distance = launchDate - now;
+
+      if (distance < 0) {
+        document.querySelector(".timer-inline").innerHTML = "🎉 We Are Live!";
+        return;
+      }
+
+      document.getElementById("cd-days").textContent =
+        Math.floor(distance / (1000 * 60 * 60 * 24));
+
+      document.getElementById("cd-hours").textContent =
+        Math.floor((distance / (1000 * 60 * 60)) % 24);
+
+      document.getElementById("cd-minutes").textContent =
+        Math.floor((distance / (1000 * 60)) % 60);
+
+      document.getElementById("cd-seconds").textContent =
+        Math.floor((distance / 1000) % 60);
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Keep footer copyright year current
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+  </script>
+
+</body>
+</html>
